@@ -1,5 +1,5 @@
 """
-server.py — screenshot-brain MCP Server
+server.py — snapsearch MCP Server
 -----------------------------------------
 Production MCP server exposing 8 tools:
 
@@ -36,16 +36,16 @@ from mcp.server.stdio import stdio_server
 from mcp.types import TextContent, Tool
 from openai import AsyncOpenAI
 
-from embeddings import ScreenshotIndex
-from models import Category, ScreenshotMeta, ScanResult
-from vision import describe_screenshot
+from .embeddings import ScreenshotIndex
+from .models import Category, ScreenshotMeta, ScanResult
+from .vision import describe_screenshot
 
 # ── Logging ───────────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
 )
-logger = logging.getLogger("screenshot-brain.server")
+logger = logging.getLogger("snapsearch.server")
 
 # ── Config from env ───────────────────────────────────────────────────────────
 DEFAULT_ROOT = os.path.expanduser(
@@ -123,7 +123,7 @@ def err(msg: str) -> list[TextContent]:
 
 # ── Server ────────────────────────────────────────────────────────────────────
 
-app = Server("screenshot-brain")
+app = Server("snapsearch")
 
 
 @app.list_tools()
@@ -445,7 +445,7 @@ async def call_tool(name: str, arguments: dict):
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 async def main():
-    logger.info("screenshot-brain MCP server starting...")
+    logger.info("snapsearch MCP server starting...")
 
     async with stdio_server() as (read_stream, write_stream):
         await app.run(
@@ -455,5 +455,8 @@ async def main():
         )
 
 
-if __name__ == "__main__":
+def sync_main():
     asyncio.run(main())
+
+if __name__ == "__main__":
+    sync_main()

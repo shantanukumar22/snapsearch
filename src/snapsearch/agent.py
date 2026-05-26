@@ -1,5 +1,5 @@
 """
-agent.py — screenshot-brain Agent
+agent.py — snapsearch Agent
 
 Autonomous screenshot organizer using OpenAI Agents SDK + custom MCP server.
 
@@ -34,7 +34,7 @@ SERVER_PATH: str = str(Path(__file__).parent / "server.py")
 # ── Agent system prompt ───────────────────────────────────────────────────────
 
 INSTRUCTIONS = """
-You are screenshot-brain, an autonomous AI agent that organizes Mac screenshots.
+You are snapsearch, an autonomous AI agent that organizes Mac screenshots.
 
 ## Your tools
 - scan_screenshots      → see all files + metadata
@@ -118,8 +118,8 @@ async def main() -> None:
     prompt = build_prompt(task, SCREENSHOTS_DIR)
 
     server_params = {
-        "command": "python",
-        "args": [SERVER_PATH],
+        "command": sys.executable,
+        "args": ["-m", "snapsearch.server"],
         "env": {
             **os.environ,
             "SCREENSHOTS_DIR": SCREENSHOTS_DIR,
@@ -127,7 +127,7 @@ async def main() -> None:
         },
     }
 
-    print("🧠 screenshot-brain")
+    print("🧠 snapsearch")
     print(f"📁 {SCREENSHOTS_DIR}")
     print(f"🎯 {'Auto-organize' if task is None else task}")
     print("─" * 50)
@@ -144,7 +144,7 @@ async def main() -> None:
             mcp_servers=[mcp_server],
         )
 
-        with trace("screenshot-brain"):
+        with trace("snapsearch"):
             result = await Runner.run(
                 agent,
                 prompt,

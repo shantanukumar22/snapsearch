@@ -15,7 +15,7 @@ from pathlib import Path
 
 from openai import AsyncOpenAI
 
-from models import Category, ScreenshotDescription
+from .models import Category, ScreenshotDescription
 
 logger = logging.getLogger(__name__)
 

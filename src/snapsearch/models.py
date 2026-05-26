@@ -1,5 +1,5 @@
 """
-Shared Pydantic models for screenshot-brain.
+Shared Pydantic models for snapsearch.
 These are the data contracts between vision, embeddings, and the MCP tools.
 """
 

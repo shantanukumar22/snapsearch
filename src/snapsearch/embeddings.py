@@ -24,14 +24,14 @@ import chromadb
 from chromadb.config import Settings
 from openai import AsyncOpenAI
 
-from models import IndexEntry, SearchResult, ScreenshotDescription
+from .models import IndexEntry, SearchResult, ScreenshotDescription
 
 logger = logging.getLogger(__name__)
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 COLLECTION_NAME   = "screenshots"
 EMBEDDING_MODEL   = "text-embedding-3-small"
-DEFAULT_DB_PATH   = os.path.expanduser("~/.screenshot-brain/chroma")
+DEFAULT_DB_PATH   = os.path.expanduser("~/.snapsearch/chroma")
 DEFAULT_N_RESULTS = 10
 
 
