@@ -1,6 +1,6 @@
 """
 agent.py — screenshot-brain Agent
------------------------------------
+
 Autonomous screenshot organizer using OpenAI Agents SDK + custom MCP server.
 
 Usage:

@@ -1,6 +1,5 @@
 """
 embeddings.py
--------------
 ChromaDB + OpenAI text-embedding-3-small for semantic search over screenshots.
 
 Flow:
