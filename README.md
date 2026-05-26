@@ -1,11 +1,5 @@
 <div align="center">
-  <h1>
-    __                                           _     
-    / _\_ __   __ _ _ __  ___  ___  __ _ _ __ ___| |__  
-    \ \| '_ \ / _` | '_ \/ __|/ _ \/ _` | '__/ __| '_ \ 
-    _\ \ | | | (_| | |_) \__ \  __/ (_| | | | (__| | | |
-    \__/_| |_|\__,_| .__/|___/\___|\__,_|_|  \___|_| |_|
-                |_|                                   </h1>
+  <h1>snapsearch</h1>
   <p><strong>Your Mac screenshots folder is a disaster. This fixes it — with vision, embeddings, and semantic search.</strong></p>
 
   <p>
