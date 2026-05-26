@@ -1,0 +1,17 @@
+# MCP server
+mcp>=1.27.0
+
+# Agent framework
+openai-agents>=0.17.0
+
+# OpenAI (vision + embeddings)
+openai>=1.109.0
+
+# Vector database (local, no server needed)
+chromadb>=1.5.0
+
+# Data validation
+pydantic>=2.0.0
+
+# Image handling
+Pillow>=10.0.0
