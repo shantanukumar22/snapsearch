@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="https://raw.githubusercontent.com/shantanukumar22/snapsearch/main/src/snapsearch/search-svg.svg" alt="snapsearch logo" width="120">
   <h1>snapsearch</h1>
   <p><strong>Your Mac screenshots folder is a disaster. This fixes it — with vision, embeddings, and semantic search.</strong></p>
 
@@ -63,55 +64,47 @@ uvx snapsearch --stats
 
 Behind the scenes, **snapsearch** builds a powerful pipeline to understand your images:
 
-```text
-screenshot.png
-      │
-      ▼
-GPT-4o vision         "React error about invalid hook call in App.js, line 23"
-      │
-      ▼
-text-embedding-3-small  [0.021, -0.847, 0.334, ...]
-      │
-      ▼
-ChromaDB (local)      Stored permanently on disk
-      │
-      ▼
-search("hooks problem") → Finds it instantly!
-```
+1. 🖼️ **screenshot.png**
+2. 👁️ **GPT-4o vision** → *"React error about invalid hook call in App.js, line 23"*
+3. 🔢 **text-embedding-3-small** → `[0.021, -0.847, 0.334, ...]`
+4. 💾 **ChromaDB (local)** → Stored permanently on disk
+5. 🔍 **search("hooks problem")** → Finds it instantly!
 
 ### The Resulting Organization
 
 Your chaotic screenshots folder turns into a clean, categorized structure:
 
-```text
-~/Screenshots/
-├── code/
-│   ├── errors/         react-hooks-invalid-call.png
-│   │                   python-importerror-requests.png
-│   └── snippets/       vim-config-lsp-setup.png
-├── design/
-│   ├── figma/          darkmode-mobile-v3.png
-│   └── other/          canva-instagram-post.png
-├── chats/              whatsapp-trip-planning-march.png
-├── docs/               notion-q2-sprint-board.png
-├── memes/              drake-hotline-bling-coding.png
-└── web/                vercel-deployment-dashboard.png
-```
+- 📂 **~/Screenshots/**
+  - 📁 **code/**
+    - 📁 errors/
+      - 📄 `react-hooks-invalid-call.png`
+      - 📄 `python-importerror-requests.png`
+    - 📁 snippets/
+      - 📄 `vim-config-lsp-setup.png`
+  - 📁 **design/**
+    - 📁 figma/
+      - 📄 `darkmode-mobile-v3.png`
+    - 📁 other/
+      - 📄 `canva-instagram-post.png`
+  - 📁 **chats/**
+    - 📄 `whatsapp-trip-planning-march.png`
+  - 📁 **docs/**
+    - 📄 `notion-q2-sprint-board.png`
+  - 📁 **memes/**
+    - 📄 `drake-hotline-bling-coding.png`
+  - 📁 **web/**
+    - 📄 `vercel-deployment-dashboard.png`
 
 ---
 
 ## 🛠️ Architecture
 
-```text
-snapsearch (Agent)
-    │
-    │   MCPServerStdio
-    ▼
-snapsearch-mcp (MCP server — 8 tools)
-    ├── vision.py        GPT-4o vision → structured description
-    ├── embeddings.py    OpenAI embeddings + ChromaDB
-    └── models.py        Pydantic data models
-```
+- 🤖 **snapsearch** (Agent)
+  - 🔌 *Connects via MCPServerStdio to:*
+  - ⚙️ **snapsearch-mcp** (MCP server — 8 tools)
+    - 👁️ `vision.py` — GPT-4o vision to structured descriptions
+    - 🧠 `embeddings.py` — OpenAI embeddings & ChromaDB operations
+    - 🧱 `models.py` — Pydantic data models
 
 ### MCP Tools Available
 
