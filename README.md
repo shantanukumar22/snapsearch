@@ -165,6 +165,3 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
 ---
 
-## 📄 License
-
-MIT
